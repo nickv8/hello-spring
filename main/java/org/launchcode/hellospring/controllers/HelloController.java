@@ -28,10 +28,17 @@ public class HelloController {
 
 
         //Handles request of the form /hello?name=LaunchCode
-    @GetMapping("hello")
-    @ResponseBody
-        public String helloWithQueryParam(@RequestParam String name){
-        return "Hello, " + name + "!";
+//    @GetMapping("hello")
+//    @ResponseBody
+//        public String helloWithQueryParam(@RequestParam String name){
+//        return "Hello, " + name + "!";
+//        }
+
+        //Handles to GET and POST requests at /hello?name=LaunchCode
+        @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
+        @ResponseBody
+        public String helloUsingPost(@RequestParam String name){
+            return "Hello, " + name + "!";
         }
 
 
@@ -48,8 +55,8 @@ public class HelloController {
             return "<html>" +
                     "<body>" +
                     "<form action='hello'>" + //submit request to hello
-                    "<input type='text' name='name'>" +
-                    "<input type='submit' value='Greet Me'>" +
+                    "<input type='text' name='name'/>" +
+                    "<input type='submit' value='Greet Me'/>" +
                     "</form>" +
                     "</body>" +
                     "</html>";
