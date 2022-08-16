@@ -36,11 +36,11 @@ public class HelloController {
 
 
         //Handles requests of the form /hello/LaunchCode
-//    @GetMapping("hello/{name}")
-//    @ResponseBody
-//        public String helloWithPathParam(@PathVariable String name){
-//        return "Hello, " + name + "!";
-//    }
+    @GetMapping("hello/{name}")
+    @ResponseBody
+        public String helloWithPathParam(@PathVariable String name){
+        return "Hello, " + name + "!";
+    }
 
 
 }
