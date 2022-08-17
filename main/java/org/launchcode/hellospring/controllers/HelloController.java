@@ -32,7 +32,6 @@ public class HelloController {
 
         //above does same as this
         //Handles request of the form /hello?name=LaunchCode
-<<<<<<< HEAD
 //    @GetMapping("")
 //
 //        public String helloWithQueryParam(@RequestParam String name){
@@ -42,7 +41,7 @@ public class HelloController {
 
         //Handles requests of the form /hello/LaunchCode
     @GetMapping("/{name}")
-=======
+
 //    @GetMapping("hello")
 //    @ResponseBody
 //        public String helloWithQueryParam(@RequestParam String name){
@@ -60,12 +59,12 @@ public class HelloController {
         //Handles requests of the form /hello/LaunchCode
     @GetMapping("hello/{name}")
     @ResponseBody
->>>>>>> 41d66b33a28c662c3fa4b2a5ef560a9d27485c9e
+
         public String helloWithPathParam(@PathVariable String name){
         return "Hello, " + name + "!";
     }
 
-<<<<<<< HEAD
+
     //lives at /hello/form
     @GetMapping("form")
     public String helloForm(){
@@ -78,20 +77,5 @@ public class HelloController {
                 "/html>";
 
 }
-=======
-    @GetMapping("form")
-    @ResponseBody
-        public String helloForm(){
-            return "<html>" +
-                    "<body>" +
-                    "<form action='hello'>" + //submit request to hello
-                    "<input type='text' name='name'/>" +
-                    "<input type='submit' value='Greet Me'/>" +
-                    "</form>" +
-                    "</body>" +
-                    "</html>";
+
     }
->>>>>>> 41d66b33a28c662c3fa4b2a5ef560a9d27485c9e
-
-
-}
