@@ -4,65 +4,51 @@ package org.launchcode.hellospring.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
+
 @Controller
 @ResponseBody
-@RequestMapping("hello")
+@RequestMapping(value = "hello")
 public class HelloController {
 
-    //Handles request at path /hello
-//    @GetMapping("hello")
-//    @ResponseBody
-//    public String hello() {
-//        return "Hello, Spring!";
-//    }
 
-    //now is found at localhost:8080/hello/goodbye
-    @GetMapping("goodbye")
-    public String goodBye() {
-        return "GoodBye, Spring!";
-    }
-
-    //lives at hello/hello
-    //handles request of the form /hello?name=LaunchCode
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST })
-        public String helloWithQueryParam(@RequestParam String name){
-            return "Hello, " + name + "!";
-        }
-
-
-        //above does same as this
-        //Handles request of the form /hello?name=LaunchCode
-//    @GetMapping("")
-//
-//        public String helloWithQueryParam(@RequestParam String name){
-//        return "Hello, " + name + "!";
-//        }
-
-
-        //Handles requests of the form /hello/LaunchCode
-    @GetMapping("/{name}")
-
-//    @GetMapping("hello")
-//    @ResponseBody
-//        public String helloWithQueryParam(@RequestParam String name){
-//        return "Hello, " + name + "!";
-//        }
-
-        //Handles to GET and POST requests at /hello?name=LaunchCode
-        @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
-        @ResponseBody
-        public String helloUsingPost(@RequestParam String name){
-            return "Hello, " + name + "!";
-        }
-
-
-        //Handles requests of the form /hello/LaunchCode
-    @GetMapping("hello/{name}")
+    @RequestMapping(value = "hello", method ={RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
-
-        public String helloWithPathParam(@PathVariable String name){
-        return "Hello, " + name + "!";
+    public String helloPost(@RequestParam String name, @RequestParam String language) {
+        if (name == null) {
+            name = "World";
+        }
+            return createMessage(name, language);
     }
+
+
+        public static String createMessage(String n, String l) {
+            String greeting = "";
+
+            if (l.equals("English")){
+                greeting = "Hello";
+            }
+
+            if (l.equals("Spanish")) {
+                greeting = "Hola";
+            }
+
+            if (l.equals("French")) {
+                greeting = "Bonjour";
+            }
+
+            if (l.equals("Italian")) {
+                greeting = "Caio";
+            }
+
+            if (l.equals("German")) {
+                greeting = "Hallo";
+            }
+
+            return greeting + " " + n;
+        }
+
+
 
 
     //lives at /hello/form
@@ -70,11 +56,19 @@ public class HelloController {
     public String helloForm(){
         return "<html>" +
                 "<body>" +
-                "<form action = 'hello' method = 'post'/>" + //submit a request to /hello
-                "<input type = 'text' value = 'Great Me!'/>" +
+                "<form action = 'hello'/>" + //submit a request to /hello
+                "<input type = 'text' name = 'name'/>" +
+                "<input type = 'submit' value = 'Greet Me!'/>" +
+                "<select name='language'>" +
+                "<option value = 'English'>English</option>" +
+                "<option value = 'Spanish'>Spanish</option>" +
+                "<option value = 'French'>French</option>" +
+                "<option value = 'Italian'>Italian</option>" +
+                "<option value = 'German'>German</option>" +
+                "</select>" +
                 "</form>" +
                 "</body>" +
-                "/html>";
+                "</html>";
 
 }
 
