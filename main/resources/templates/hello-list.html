@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--        creating a for each loop and then entering them into an unordered list-->
+    <ul>
+        <th:block th:each="name : ${names}">  <!-- the for each syntax -->
+            <li th:text="${name}"></li> <!-- will print each name in ArrayList names -->
+        </th:block>
+    </ul>
+</body>
+</html>
