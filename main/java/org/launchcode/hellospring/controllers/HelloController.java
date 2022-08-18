@@ -20,26 +20,12 @@ public class HelloController {
         return "GoodBye, Spring!";
     }
 
-    @RequestMapping(value="hellogoodbye", method = {RequestMethod.GET, RequestMethod.POST })
+    // Handles requests of the form /hello?name=LaunchCode
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "hello")
     @ResponseBody
-        public String helloGoodbye(){
-            return "Hello and Goodbye together";
-        }
-
-
-        //Handles request of the form /hello?name=LaunchCode
-//    @GetMapping("hello")
-//    @ResponseBody
-//        public String helloWithQueryParam(@RequestParam String name){
-//        return "Hello, " + name + "!";
-//        }
-
-        //Handles to GET and POST requests at /hello?name=LaunchCode
-        @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
-        @ResponseBody
-        public String helloUsingPost(@RequestParam String name){
-            return "Hello, " + name + "!";
-        }
+    public String helloWithQueryParam(@RequestParam String name) {
+        return "Hello, " + name + "!";
+    }
 
 
         //Handles requests of the form /hello/LaunchCode
