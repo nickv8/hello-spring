@@ -18,7 +18,13 @@ public class HelloController {
         if (name == null) {
             name = "World";
         }
-            return createMessage(name, language);
+        //figure out how to add parameters to html
+//            return "<html>" +
+//                    "<body>" +
+//                    "<h1></h1>" +
+//                    "</body>" +
+//                    "</html>";
+       return createMessage(name, language);
     }
 
 
